@@ -1,0 +1,903 @@
+/**
+* Imagify WordPress Theme Test
+* by @christtondj for WPMedia
+* 
+* https://github.com/christtondj
+* MIT license: https://www.opensource.org/licenses/mit-license.php
+*/
+
+/* This is a mobile first SCSS */
+
+/* Global Mixins */
+
+/* Custom Font Mixin */
+
+@mixin font($font-family, $font-file) {
+  @font-face {
+    font-family: $font-family;
+    src: url($font-file + ".otf?") format("opentype"),
+      url($font-file + ".ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+@include font(
+  "Brandon Grotesque",
+  "./Fonts/Brandon-Grotesque-Font-Family/brandon-grotesque-black-58a8a3e824392"
+);
+@include font(
+  "Source Sans Pro",
+  "./Fonts/Source_Sans_Pro/SourceSansPro-Regular"
+);
+
+/* Media Queries Mixin */
+
+$tablet-width: 700px;
+$desktop-width: 1368px;
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+/* Basic styling */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  overscroll-behavior: none;
+}
+
+body {
+  background: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: normal;
+  color: #4a5362;
+}
+
+nav {
+  padding: 0 15px;
+}
+
+.menu,
+.submenu {
+  list-style-type: none;
+}
+
+.item {
+  padding: 10px;
+}
+
+.item.button {
+  padding: 9px -10px;
+}
+
+/* 
+
+
+HTML Tags 
+
+
+*/
+
+nav {
+  /* Navigation Bar */
+
+  /* Resize For Desktop */
+
+  @include desktop {
+    width: 90%;
+  }
+}
+
+h1 {
+  /* Title/H1 */
+
+  font-family: "Brandon Grotesque", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 54px;
+  /* or 129% */
+
+  letter-spacing: -0.005em;
+
+  /* Black */
+
+  color: #343a49;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+
+  /* Resize For Tablet */
+
+  @include tablet {
+    font-size: 42px;
+    line-height: 54px;
+  }
+
+  /* Resize For Desktop */
+
+  @include desktop {
+    font-size: 56px;
+    line-height: 72px;
+  }
+}
+
+h2 {
+  /* Title/H2 */
+
+  font-family: "Brandon Grotesque", sans-serif;
+  font-style: normal;
+  font-weight: 450;
+  font-size: 28px;
+  line-height: 38px;
+  /* identical to box height, or 120% */
+
+  text-align: center;
+  letter-spacing: -0.005em;
+
+  /* Black */
+
+  color: #343a49;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+
+  /* Resize For Tablet */
+
+  @include tablet {
+    font-size: 38px;
+    line-height: 38px;
+  }
+
+  /* Resize For Desktop */
+
+  @include desktop {
+    font-size: 40px;
+    line-height: 48px;
+  }
+}
+
+h3 {
+  /* Desktop/Title/H3 */
+
+  font-family: "Brandon Grotesque";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 20px;
+  line-height: 36px;
+  /* or 129% */
+  width: 250px;
+  height: 72px;
+  /* Black */
+
+  color: #343a49;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+
+  /* Resize For Tablet */
+
+  @include tablet {
+    font-size: 24px;
+    line-height: 25px;
+    height: 20px;
+  }
+
+  /* Resize For Tablet */
+
+  @include desktop {
+    font-size: 28px;
+    line-height: 36px;
+  }
+}
+
+p {
+  /*Paragraph*/
+
+  font-size: 16px;
+
+  /* Resize For Tablet */
+
+  @include tablet {
+    font-size: 18px;
+  }
+
+  /* Resize For Tablet */
+
+  @include desktop {
+    font-size: 20px;
+  }
+}
+
+a {
+  /* Links */
+
+  color: #343a49;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+a,
+a:visited,
+a:focus {
+  text-decoration: none;
+}
+
+/* 
+
+
+Website Sections 
+
+
+*/
+
+/* Hero Section */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-top: 40px;
+
+    p {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 24px;
+      color: #4a5362;
+      margin-top: -10px;
+
+      /* Resize For Tablet */
+
+      @include tablet {
+        font-size: 21px;
+        line-height: 28px;
+      }
+
+      /* Resize For Desktop */
+
+      @include desktop {
+        font-size: 24px;
+        line-height: 32px;
+      }
+    }
+
+    /* Primary Button */
+
+    .btn-hero {
+      /* Auto layout */
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 16px 32px;
+      gap: 16px;
+      color: #ffffff;
+
+      /* Size */
+      width: 187px;
+      height: 48px;
+
+      /* Blue */
+
+      background: #40b1d0;
+      /* Dark Blue */
+
+      border-bottom: 6px solid #3694ae;
+      border-radius: 4px;
+
+      /* Inside auto layout */
+
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+
+      /* Resize For Tablet */
+
+      @include tablet {
+        width: 207px;
+        height: 58px;
+      }
+
+      /* Resize For Desktop */
+
+      @include desktop {
+        width: 207px;
+        height: 58px;
+      }
+    }
+
+    .btn-hero:hover {
+      box-shadow: 0px 4px 0px #3694ae;
+    }
+
+    /* Resize For Tablet */
+
+    @include tablet {
+      margin: 40px;
+    }
+
+    /* Resize For Desktop */
+
+    @include desktop {
+      width: 600px;
+      height: 144px;
+      flex-wrap: nowrap;
+      margin: 160px 50px 50px 50px;
+    }
+  }
+
+  .hero-image {
+    margin-top: 50px;
+    object-fit: cover;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  /* Resize For Desktop */
+
+  @include desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/* Mobile menu */
+/* Submenu up from mobile screens */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  li.logo {
+    /* Resize For Tablet */
+
+    @include tablet {
+      flex: 1;
+    }
+
+    /* Resize For Desktop */
+
+    @include desktop {
+      order: 0;
+    }
+  }
+
+  li {
+    a {
+      display: block;
+      padding: 15px 5px;
+    }
+  }
+
+  li.subitem {
+    a {
+      padding: 15px;
+    }
+  }
+
+  li.button.secondary {
+    a {
+      /* Resize For Tablet */
+
+      @include tablet {
+        padding: 10px 15px;
+        margin: 5px 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 16px 32px;
+        gap: 6px;
+        color: #ffffff;
+        background: #40b1d0;
+        border-bottom: 3px solid #3694ae;
+        border-radius: 4px;
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+      }
+
+      /* Resize For Desktop */
+
+      @include desktop {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 16px 32px;
+        gap: 6px;
+        color: #ffffff;
+        background: #40b1d0;
+        border-bottom: 3px solid #3694ae;
+        border-radius: 4px;
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+        &:hover{
+          border-bottom: 6px solid #3694ae;
+        }
+      }
+    }
+  }
+
+  /* Resize For Tablet */
+
+  @include tablet {
+    justify-content: center;
+  }
+
+  /* Resize For Desktop */
+
+  @include desktop {
+    width: 112%;
+    display: grid;
+    grid-template-columns: repeat(11, auto);
+    align-items: center;
+    justify-items: center;
+    .logo {
+      grid-column: 2/2;
+    }
+    .item.how {
+      grid-column: 4/4;
+    }
+    .item.plugin {
+      grid-column: 5/5;
+    }
+    .item.resources {
+      grid-column:6/6;
+    }
+    .item.pricing {
+      grid-column: 7/7;
+    }
+
+    .item.button.primary {
+      display: inline-grid;
+      grid-column: 9/9;
+    }
+    .item.button.secondary {
+      display: inline-grid;
+      grid-column: 10/10;
+    }
+  }
+}
+
+.toggle {
+  order: 1;
+  font-size: 20px;
+  /* Resize For Tablet */
+
+  @include tablet {
+    flex: 1;
+    text-align: right;
+    order: 2;
+  }
+
+  /* Resize For Desktop */
+
+  @include desktop {
+    display: none;
+  }
+}
+
+.item.button {
+  order: 2;
+  /* Resize For Tablet */
+
+  @include tablet {
+    width: auto;
+    order: 1;
+    display: block;
+  }
+
+  /* Resize For Desktop */
+
+  @include desktop {
+    display: flex;
+    width: auto;
+    order: 3;
+    display: block;
+  }
+}
+
+.item {
+  order: 3;
+  width: 100%;
+  text-align: center;
+  display: none;
+
+  &:not(.button) {
+    a {
+      &:hover {
+        color: #343a49;
+      }
+    }
+  }
+
+  a {
+    &:hover {
+      &::after {
+        color: #343a49;
+      }
+    }
+  }
+
+  /* Resize For Tablet */
+
+  @include tablet {
+    justify-content: center;
+  }
+
+  /* Resize For Desktop */
+
+  @include desktop {
+    order: 1;
+    position: relative;
+    display: block;
+    width: auto;
+  }
+
+  .button.secondary {
+    a {
+      /* Resize For Tablet */
+
+      @include tablet {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 16px 32px;
+        gap: 6px;
+        margin-top: 10px;
+        color: #ffffff;
+        background: #40b1d0;
+        border-bottom: 3px solid #3694ae;
+        border-radius: 4px;
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+      }
+
+      /* Resize For Desktop */
+
+      @include desktop {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 16px 32px;
+        gap: 6px;
+        margin-top: 10px;
+        color: #ffffff;
+        background: #40b1d0;
+        border-bottom: 3px solid #3694ae;
+        border-radius: 4px;
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+      }
+    }
+
+    /* Resize For Tablet */
+
+    @include tablet {
+      border: 0;
+    }
+
+    /* Resize For Desktop */
+
+    @include desktop {
+    }
+  }
+}
+
+.button.secondary {
+  a {
+    &:hover {
+      /* Resize For Tablet */
+
+      @include tablet {
+        box-shadow: 0px 6px 0px #3694ae;
+      }
+
+      /* Resize For Desktop */
+
+      @include desktop {
+      }
+    }
+  }
+}
+
+.hero-image {
+  /* Resize For Tablet */
+
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin: 40px 40px 0px 40px;
+  }
+
+  /* Resize For Desktop */
+
+  @include desktop {
+  }
+
+  img {
+    /* Resize For Tablet */
+
+    @include tablet {
+      max-width: 100%;
+    }
+
+    /* Resize For Desktop */
+
+    @include desktop {
+    }
+  }
+}
+
+.active {
+  .item {
+    display: block;
+  }
+}
+
+.submenu {
+  display: none;
+}
+
+.submenu-active:hover {
+  /* Resize For Tablet */
+
+  @include tablet {
+  }
+
+  /* Resize For Desktop */
+
+  @include desktop {
+    border-radius: 4px;
+  }
+
+  .submenu {
+    display: block;
+
+    /* Resize For Tablet */
+
+    @include tablet {
+    }
+
+    /* Resize For Desktop */
+
+    @include desktop {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 68px;
+      background: #ffffff;
+
+      /* Drop Shadow */
+
+      box-shadow: 0px 4.96386px 49.6386px rgba(113, 112, 112, 0.15);
+      border-radius: 4px;
+
+      /* Inside auto layout */
+
+      flex: none;
+      order: 3;
+      flex-grow: 0;
+      z-index: 3;
+    }
+  }
+
+  background-color: #ffffff;
+  border-radius: 4px;
+
+  /* Resize For Tablet */
+
+  @include tablet {
+  }
+
+  /* Resize For Desktop */
+
+  @include desktop {
+  }
+}
+
+.has-submenu {
+  i {
+    font-size: 12px;
+  }
+}
+
+.subitem {
+  a {
+    padding: 10px 15px;
+  }
+
+  /* Resize For Tablet */
+
+  @include tablet {
+  }
+
+  /* Resize For Desktop */
+
+  @include desktop {
+    float: none;
+    color: #343a49;
+    padding: 0;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    &:hover{
+      background-color: #f4f7f9;
+    }
+  }
+}
+
+/* 
+
+
+
+
+Perks Section
+
+
+
+*/
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f4f7f9;
+  margin-top: -5px;
+
+  .capabilities {
+    /* Section */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 50px;
+    /* Inside auto layout */
+
+    .perk {
+      /* Auto layout */
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      width: 250px;
+      gap: 20px;
+
+      p {
+        width: 250px;
+        /* Desktop/Body/Large/Regular */
+
+        font-family: "Source Sans Pro";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        margin: auto;
+        /* or 144% */
+
+        /* Dark Grey */
+
+        color: #4a5362;
+
+        /* Inside auto layout */
+
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+        /* Resize For Tablet */
+
+        @include tablet {
+          margin-top: 50px;
+          height: 150px;
+        }
+
+        /* Resize For Desktop */
+
+        @include desktop {
+        }
+      }
+      /* Resize For Tablet */
+
+      @include tablet {
+      }
+
+      /* Resize For Desktop */
+
+      @include desktop {
+        width: 287px;
+        height: 386px;
+        margin-top: 50px;
+        border-bottom: 1px solid #dadada;
+      }
+    }
+
+    .perk:hover {
+      /* Auto layout */
+
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: center;
+      padding: 26px 20px;
+
+      width: 280px;
+
+      /* Black */
+
+      background: #343a49;
+      border-radius: 4px;
+
+      h3 {
+        /* Text Color */
+        color: #ffffff;
+      }
+
+      p {
+        /* Text Color */
+        color: #ffffff;
+
+        span {
+          /* Text Color */
+          color: #40b1d0;
+        }
+      }
+    }
+    /* Resize For Tablet */
+
+    @include tablet {
+    }
+
+    /* Resize For Desktop */
+
+    @include desktop {
+    }
+  }
+  /* Resize For Tablet */
+
+  @include tablet {
+  }
+
+  /* Resize For Desktop */
+
+  @include desktop {
+    min-height: 722px;
+  }
+}

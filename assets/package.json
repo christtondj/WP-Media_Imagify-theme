@@ -1,0 +1,16 @@
+{
+  "name": "imagify",
+  "version": "1.0.0",
+  "description": "WP-Media Imagify theme developement test for Parfait",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["wordpress", "theme", "imagify"],
+  "author": "Parfait",
+  "license": "MIT",
+  "private": true,
+  "browserslist": [
+    "defaults"
+  ]
+}
